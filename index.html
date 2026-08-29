@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Name | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #d8c3a5;
+            color: #4a2c20;
+            line-height: 1.6;
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(216, 195, 165, 0.85);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(74, 44, 32, 0.12);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+
+            background: linear-gradient(
+                90deg,
+                #3b2118,
+                #6b3f2d,
+                #9a674f,
+                #3b2118
+            );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation: gradientMove 5s infinite linear;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5a3829;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #2d170f;
+        }
+
+        /* ---------------- GENERAL ---------------- */
+
+        section {
+            min-height: 100vh;
+            padding: 120px 8% 80px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #3b2118,
+                #704432,
+                #a8755b,
+                #3b2118
+            );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation: gradientMove 6s infinite linear;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 200%;
+            }
+        }
+
+        /* ---------------- HERO ---------------- */
+
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            min-height: 100vh;
+        }
+
+        .hero {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 9vw, 100px);
+            line-height: 1;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+
+        .hero h2 {
+            font-size: clamp(20px, 3vw, 32px);
+            margin-bottom: 20px;
+            color: #62402f;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 18px;
+            color: #624738;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 28px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            background: linear-gradient(
+                135deg,
+                #3b2118,
+                #704432,
+                #9a674f
+            );
+
+            color: #f4eadc;
+
+            transition: 0.3s;
+
+            box-shadow: 0 8px 25px rgba(59, 33, 24, 0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(59, 33, 24, 0.3);
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: #4a2c20;
+            border: 2px solid #704432;
+            box-shadow: none;
+        }
+
+        .button.secondary:hover {
+            background: rgba(112, 68, 50, 0.1);
+        }
+
+        /* ---------------- ABOUT ---------------- */
+
+        .section-title {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 50px;
+            font-weight: 900;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(244, 234, 220, 0.35);
+            border: 1px solid rgba(74, 44, 32, 0.15);
+
+            border-radius: 20px;
+            padding: 35px;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 10px 35px rgba(74, 44, 32, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 40px rgba(74, 44, 32, 0.15);
+        }
+
+        .card h3 {
+            font-size: 25px;
+            margin-bottom: 15px;
+
+            background: linear-gradient(
+                90deg,
+                #3b2118,
+                #87563e
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card p {
+            color: #624738;
+        }
+
+        /* ---------------- PROJECTS ---------------- */
+
+        .projects {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            padding: 30px;
+            min-height: 250px;
+
+            border-radius: 20px;
+
+            background: rgba(244, 234, 220, 0.35);
+            border: 1px solid rgba(74, 44, 32, 0.15);
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.3s;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(74, 44, 32, 0.15);
+        }
+
+        .project h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+
+            background: linear-gradient(
+                90deg,
+                #3b2118,
+                #80513a,
+                #a8755b
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .project p {
+            color: #624738;
+        }
+
+        .project-link {
+            margin-top: 25px;
+
+            color: #4a2c20;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .project-link:hover {
+            letter-spacing: 1px;
+        }
+
+        /* ---------------- SKILLS ---------------- */
+
+        .skills {
+            max-width: 900px;
+            margin: auto;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 12px 22px;
+
+            border-radius: 30px;
+
+            background: rgba(244, 234, 220, 0.4);
+            border: 1px solid rgba(74, 44, 32, 0.2);
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+            background: rgba(244, 234, 220, 0.65);
+        }
+
+        /* ---------------- CONTACT ---------------- */
+
+        .contact {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact p {
+            color: #624738;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+
+            border-top: 1px solid rgba(74, 44, 32, 0.12);
+
+            color: #624738;
+        }
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">YOUR NAME</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section id="home">
+
+        <div class="hero">
+
+            <h1 class="gradient-text">
+                YOUR NAME
+            </h1>
+
+            <h2>
+                Your Profession / Title
+            </h2>
+
+            <p>
+                This is placeholder text for your introduction.
+                Write a short description about yourself, what you do,
+                and what makes your work unique.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="button">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="button secondary">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title gradient-text">
+            About Me
+        </h2>
+
+        <div class="about-container">
+
+            <div class="card">
+                <h3>Who I Am</h3>
+
+                <p>
+                    Placeholder text about yourself goes here.
+                    Talk about who you are, your interests,
+                    your experience, and what you enjoy working on.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>What I Do</h3>
+
+                <p>
+                    Placeholder text describing your services,
+                    profession, projects, or the type of work
+                    you specialize in.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2 class="section-title gradient-text">
+            My Projects
+        </h2>
+
+        <div class="projects">
+
+            <div class="project">
+
+                <div>
+                    <h3>Project One</h3>
+
+                    <p>
+                        Placeholder description for your first
+                        project. Explain what it is and what
+                        technologies you used.
+                    </p>
+                </div>
+
+                <a href="#" class="project-link">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div>
+                    <h3>Project Two</h3>
+
+                    <p>
+                        Placeholder description for your second
+                        project. Add some information about
+                        what makes this project interesting.
+                    </p>
+                </div>
+
+                <a href="#" class="project-link">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div>
+                    <h3>Project Three</h3>
+
+                    <p>
+                        Placeholder description for your third
+                        project. You can replace this with
+                        whatever project you want.
+                    </p>
+                </div>
+
+                <a href="#" class="project-link">
+                    View Project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title gradient-text">
+            Skills
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">Skill One</div>
+            <div class="skill">Skill Two</div>
+            <div class="skill">Skill Three</div>
+            <div class="skill">Skill Four</div>
+            <div class="skill">Skill Five</div>
+            <div class="skill">Skill Six</div>
+            <div class="skill">Skill Seven</div>
+            <div class="skill">Skill Eight</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="contact">
+
+            <h2 class="section-title gradient-text">
+                Let's Work Together
+            </h2>
+
+            <p>
+                Placeholder text for your contact section.
+                Add your email, Discord, social media,
+                or whatever method people can use to reach you.
+            </p>
+
+            <a href="mailto:your@email.com" class="button">
+                Get In Touch
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Your Name. All rights reserved.
+    </footer>
+
+</body>
+</html>
